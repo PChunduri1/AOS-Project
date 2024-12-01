@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Management</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .file-list {
+            margin-top: 30px;
+        }
+        .file-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .file-list li button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+        .file-list li button:hover {
+            background-color: #c82333;
+        }
+        .upload-section {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .upload-section input[type="file"] {
+            margin-bottom: 20px;
+        }
+        .upload-section button {
+            font-size: 16px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .upload-section button:hover {
+            background-color: #0056b3;
+        }
+        /* Custom navbar styling */
+        .navbar {
+            background-color: #343a40; /* Dark navbar background */
+        }
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            color: #ffffff !important; /* White text color */
+        }
+        .navbar-nav .nav-link.active {
+            background-color: #495057; /* Active link background */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Admin Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/files">File Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users">User Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/monitor">System Monitoring</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/backup">Backup and Restore</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="container">
+        <!-- File Upload Section -->
+        <div class="upload-section">
+            <h2>Upload a File</h2>
+            <form action="/files" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" required>
+                <br>
+                <button type="submit">Upload File</button>
+            </form>
+        </div>
+
+        <!-- List of Uploaded Files -->
+        <div class="file-list">
+            <h2 class="mt-5">Uploaded Files</h2>
+            <ul class="list-unstyled">
+                {% for file in files %}
+                    <li>
+                        <span>{{ file }}</span>
+                        <form action="/files" method="post" style="display: inline;">
+                            <input type="hidden" name="file_name" value="{{ file }}">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (for interactive components like modals, etc.) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+
