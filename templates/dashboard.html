@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e9ecef; /* Light gray background for all pages */
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 40px;
+        }
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .card {
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            background-color: #ffffff;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-body {
+            padding: 30px;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #4CAF50;  /* Green color for titles */
+        }
+        .card-text {
+            font-size: 1rem;
+            color: #777;
+        }
+        .btn-custom {
+            font-size: 16px;
+            padding: 12px 25px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-custom:hover {
+            opacity: 0.8;
+        }
+        .dashboard-card i {
+            font-size: 50px;
+            color: #007bff; /* Blue icon color */
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .col-md-3 {
+            max-width: 23%;
+        }
+
+        /* Button color themes */
+        .btn-file {
+            background-color: #28a745; /* Green for File Management */
+            color: white;
+        }
+        .btn-user {
+            background-color: #17a2b8; /* Teal for User Management */
+            color: white;
+        }
+        .btn-monitor {
+            background-color: #ffc107; /* Yellow for System Monitoring */
+            color: black;
+        }
+        .btn-backup {
+            background-color: #dc3545; /* Red for Backup and Restore */
+            color: white;
+        }
+
+        .btn-custom:hover {
+            opacity: 0.8;
+        }
+
+        /* Custom colors for logout button */
+        .btn-logout {
+            font-size: 16px;
+            padding: 12px 25px;
+            border-radius: 5px;
+            background-color: #ff4d4d;
+            color: white;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .btn-logout:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="dashboard-header">
+            <h1>Welcome, {{ username }}!</h1>
+            <p class="lead">Choose a section to manage your system:</p>
+        </div>
+
+        <!-- Dashboard Cards -->
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body dashboard-card">
+                        <i class="fas fa-folder"></i>
+                        <h5 class="card-title">File Management</h5>
+                        <p class="card-text">Manage your files with ease.</p>
+                        <a href="/files" class="btn btn-file btn-custom">Go to Files</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body dashboard-card">
+                        <i class="fas fa-users"></i>
+                        <h5 class="card-title">User Management</h5>
+                        <p class="card-text">Manage user permissions and roles.</p>
+                        <a href="/users" class="btn btn-user btn-custom">Go to Users</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body dashboard-card">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <h5 class="card-title">System Monitoring</h5>
+                        <p class="card-text">Monitor system health and performance.</p>
+                        <a href="/monitor" class="btn btn-monitor btn-custom">Go to Monitoring</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body dashboard-card">
+                        <i class="fas fa-database"></i>
+                        <h5 class="card-title">Backup and Restore</h5>
+                        <p class="card-text">Manage backups and restore data.</p>
+                        <a href="/backup" class="btn btn-backup btn-custom">Go to Backup</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logout Button -->
+        <div class="text-center">
+            <a href="/logout" class="btn btn-logout">Logout <i class="fas fa-sign-out-alt"></i></a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (for interactive components like modals, etc.) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
